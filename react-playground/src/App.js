@@ -8,7 +8,8 @@ import RouletteGun from './state-drills/RouletteGun';
 class App extends Component {
   static defaultProps = {
     state: {
-      count: 1
+      count: 1,
+      bulletInChamber: 8
     }
   }
 

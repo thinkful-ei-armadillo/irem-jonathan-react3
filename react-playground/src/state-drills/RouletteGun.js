@@ -12,30 +12,37 @@ class RouletteGun extends Component {
             this.setState({spinningTheChamber: !this.state.spinningTheChamber});
             this.timeout();
         }
-        this.timeout=()=>{
+        this.timeout=()=> {
             let min = Math.ceil(1);
             let max = Math.floor(8);
-            // console.log(Math.floor(Math.random()*(max-min+1))+min);
-            let timeout = setTimeout(Math.floor(Math.random()*(max-min+1))+min, 2000);
-            this.setState({chamber: timeout});
-            console.log(timeout);
+            const randomNum = Math.floor(Math.random() * (max - min + 1)) + min
+            console.log(randomNum);
+            setTimeout(this.setState({ chamber: randomNum }), 2000);
+            console.log({chamber: randomNum});
+            console.log(this.state.chamber)
             this.setState({spinningTheChamber: !this.state.spinningTheChamber});
-        }
+        } 
     }
- 
+    
+    componentDidMount() {
+        this.timeOut = setTimeout(this.timeout())
+    }
 
     render(){
         return (
             <div>
                 <p>
-                    {this.state.spinningTheChamber? 'spinning the chamber and pulling the trigger! ...': ''}
-                    {/* {console.log(this.props.bulletInChamber)} */}
-                    {this.state.chamber === this.props.bulletInChamber ? ' you\'re safe!': 'BANG!!!!'}
+                    {this.state.spinningTheChamber ? 'spinning the chamber and pulling the trigger! ...' : this.state.chamber === this.props.bulletInChamber ? ' BANG!!!!' : 'you\'re safe'}
                 </p>
                 <button onClick={this.handleButtonClick}>Pull the trigger!</button>
             </div>
         );
     };
+
+    componentWillUnmount(){
+        clearTimeout(this.timeOut)
+    }
+
 }
 
 export default RouletteGun;
