@@ -5,7 +5,6 @@ class Bomb extends Component {
     super(props)
     this.state = {
       count: 0,
-      clock: ['tick', 'tock', 'boom']
     }
   }
   

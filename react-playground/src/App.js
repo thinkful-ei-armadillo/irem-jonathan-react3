@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import HelloWorld from './state-drills/HelloWorld';
-import Bomb from './state-drills/Bomb';
+// import Bomb from './state-drills/Bomb';
+import RouletteGun from './state-drills/RouletteGun';
 
 
 class App extends Component {
@@ -17,8 +18,11 @@ class App extends Component {
         <div className="App">
           <HelloWorld who={HelloWorld.who}/>
         </div>
-        <div>
+        {/* <div>
           <Bomb />
+        </div> */}
+        <div>
+          <RouletteGun bulletInChamber={8} />
         </div>
       </div>
     );
